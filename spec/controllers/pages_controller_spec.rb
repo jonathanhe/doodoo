@@ -6,10 +6,6 @@ describe PagesController do
   # Otherwise some tests just wouldn't pass for strange reasons
   render_views
 
-  before(:each) do
-    @base_title = "Doodoo"
-  end
-
   describe "GET 'home'" do
     it "returns http success" do
       get :home
@@ -19,7 +15,7 @@ describe PagesController do
     it "should have the right title" do
       get :home
       response.should have_selector('title',
-                                    :content => "#{@base_title} | Home")
+                                    :content => 'Home')
     end
   end
 
@@ -32,7 +28,7 @@ describe PagesController do
     it "should have the right title" do
       get :contact
       response.should have_selector('title',
-                                    :content => "#{@base_title} | Contact us")
+                                    :content => 'Contact us')
     end
   end
 
@@ -45,7 +41,7 @@ describe PagesController do
     it "should have the right title" do
       get :about
       response.should have_selector('title',
-                                    :content => "#{@base_title} | About us")
+                                    :content => 'About us')
     end
   end
 
@@ -57,8 +53,7 @@ describe PagesController do
     it "should have the right title" do
       get :help
       response.should have_selector('title',
-                                    :content => "#{@base_title} | Help")
+                                    :content => 'Help')
     end
   end
-
 end
