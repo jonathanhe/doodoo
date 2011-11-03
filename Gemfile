@@ -21,6 +21,7 @@ gem 'will_paginate', '3.0.2'
 # TDD devleopment
 group :development do
   gem 'rspec-rails', '2.7.0'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'faker', '1.0.1'
 end
 
