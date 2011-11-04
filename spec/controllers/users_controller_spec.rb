@@ -72,7 +72,8 @@ describe UsersController do
 
       it "should render the 'new' page" do
         post :create, :user => @attr
-        response.should render_template('new')
+        response.should render_template(new_user_path)
+        #response.should render_template('new')
       end
     end
   end

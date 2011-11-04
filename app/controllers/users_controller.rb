@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       # TODO: handle success case here!
     else
       @title = 'Sign up an account'
-      render 'new'
+      render new_user_path
+      #render 'new'
     end
   end
 
