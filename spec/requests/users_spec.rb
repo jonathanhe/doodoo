@@ -42,4 +42,35 @@ describe "Users" do
       end
     end
   end
+
+  describe "sign in and sign out" do
+
+    before(:each) do
+    end
+
+    describe "failure case" do
+
+      it "should not sign a user in given invalid email / password" do
+        visit signin_path
+        fill_in :email,    :with => ''
+        fill_in :password, :with => ''
+        click_button
+        response.should have_selector('div.flash.error',
+                                      :content => 'invalid')
+        controller.should_not be_signed_in
+      end
+    end
+
+    describe "success case" do
+
+      it "should sign a valid user in and out" do
+        integration_sign_in(Factory(:user))
+        response.should have_selector('div.flash.success',
+                                      :content => 'Welcome')
+        controller.should be_signed_in
+        click_link "Sign out"
+        controller.should_not be_signed_in
+      end
+    end
+  end
 end
