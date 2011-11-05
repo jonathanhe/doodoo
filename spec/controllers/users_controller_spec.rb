@@ -210,4 +210,24 @@ describe UsersController do
       end
     end
   end
+
+  describe "require authentication for edit/update pages" do
+
+    before(:each) do
+      @user = Factory(:user)
+    end
+
+    describe "for non-signed-in users" do
+
+      it "should should deny access to 'edit' page" do
+        get :edit, :id => @user
+        response.should redirect_to(signin_path)
+      end
+
+      it "should deny access to 'update' page" do
+        put :update, :id => @user, :user => {}
+        response.should redirect_to(signin_path)
+      end
+    end
+  end
 end
