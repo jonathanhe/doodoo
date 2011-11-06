@@ -26,7 +26,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    # Since we are checking @user within the correct_user method,
+    # we don't need to retrieve the user here again
+    #@user = User.find(params[:id])
     @title = "Edit your account information"
   end
 
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(user)
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
     end
 end
