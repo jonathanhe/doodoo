@@ -249,7 +249,8 @@ describe UsersController do
     describe "for signed-in users" do
 
       before(:each) do
-        wrong_user = Factory(:user, :email => "user@example.com")
+        wrong_user = Factory(:user,
+                             :email => Factory.next(:email))
         test_sign_in(wrong_user)
       end
 
@@ -280,8 +281,8 @@ describe UsersController do
 
       before(:each) do
         @user  = test_sign_in(Factory(:user))
-        @user2 = Factory(:user, :email => "user2@example.com")
-        @user3 = Factory(:user, :email => "user3@example.com")
+        @user2 = Factory(:user, :email => Factory.next(:email))
+        @user3 = Factory(:user, :email => Factory.next(:email))
         @users = [@user, @user2, @user3]
       end
 
