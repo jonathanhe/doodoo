@@ -17,8 +17,8 @@ class SessionsController < ApplicationController
       # remember to sign the user in
       sign_in user
       flash[:success] = 'Welcome back, ' + user.first_name
-      redirect_back_or user_path(user)
-      #redirect_back_or user
+      #redirect_back_or user_path(user)
+      redirect_back_or user
     end
   end
 
